@@ -85,7 +85,6 @@ http://localhost:8888
 `flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics`
 
 ## Результаты
-Здесь коротко выпишите результаты.
 | Модель | MAE (USD) | R² | Примечание |
 |--------|-------------|-------------|------------|
 | Dummy (Mean) | 0.2519 | -0.0423 | |
