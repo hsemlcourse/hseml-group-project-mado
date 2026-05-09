@@ -40,16 +40,19 @@
 ├── data
 │   ├── processed               # Очищенные и обработанные данные
 │   └── raw                     # Исходные файлы
+│       └── avocado.csv    
 ├── models                      # Сохранённые модели 
 ├── notebooks
-│   └── cp1_eda_preprocessing.ipynb    # результат cp1
+│   └── main.ipynb    # результат cp1
 ├── presentation                # Презентация для защиты
 ├── report
-│   ├── images                  # Изображения для отчёта
 │   └── report.md               # Финальный отчёт
 ├── src
 ├── tests
 │   └── test.py                 # Тесты пайплайна
+├── Dockerfile
+├── docker-compose.yml
+├── Makefile
 ├── requirements.txt
 └── README.md
 ```
@@ -62,29 +65,31 @@
 # Собрать и запустить контейнер
 docker-compose up --build
 
-# После запуска откройте в браузере. Токен появится в терминале:
+# После запуска откройте в браузере по ссылке из терминала:
 http://localhost:8888/lab?token=...  
 
 # 2 способ открыть
 # Иначе можно перейти по ссылке 
 http://localhost:8888
 
-# И ввести в поле token or password токен из терминала 
+# И ввести в поле 'token or password' токен из терминала 
 ```
+## Качество кода (Линтер)
 
+Для проверки качества кода используется `flake8`.
 
-## Данные
-- `data/raw/` — исходные файлы
-- `data/processed/` — предобработанные данные
+>Для запуска можно воспользоваться Makefile. Для получения списка досутпных команд `make help`
 
+Для проверки кода на windows можно вручную ввести команды в терминале:       
+`flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics`      
+`flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics`
 
 ## Результаты
 Здесь коротко выпишите результаты.
 | Модель | MAE (USD) | R² | Примечание |
 |--------|-------------|-------------|------------|
 | Dummy (Mean) | 0.2519 | -0.0423 | |
-| Linear Regression | 0.2014 | 0.3311 | |
-| Random Forest | 0.1722 | 0.4866 | |
+| Gradient Boosting | 0.1573 | 0.5834 | |
 
 
 Финальный отчёт: [`report/report.md`](report/report.md)
